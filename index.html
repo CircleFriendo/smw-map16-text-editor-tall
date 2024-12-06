@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SMW Map16 Text Editor</title>
+<link rel='stylesheet' href='style.css'>
+<script src="Map16TextEditor.js"></script>
+</head>
+<body>
+
+
+<h1>Super Mario World Map16 Text Editor</h1>
+
+<canvas id='preview' width='512' height='512'></canvas>
+
+<textarea id='message' rows="32" cols="32" oninput="updateText();"></textarea><br>
+Map16 page: <input id='page' size='2' value='02' onchange='updatePage()'><br>
+<button onclick="exportText();">Export</button><br>
+<script>
+
+const previewWidth = 256, previewHeight = 256;
+const tileWidth = 8, tileHeight = 8;
+const scale = 2;
+
+var data;
+var page = "02";
+
+let tiles = new Image();
+tiles.src = 'Tiles.png';
+tiles.addEventListener('load', redrawPreview);
+
+let preview = document.getElementById('preview');
+context = preview.getContext('2d');
+context.scale(scale, scale);
+
+loadText();
+
+</script>
+</body>
+</html>
